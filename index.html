@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Growth Table | A Growth-Stage Founder Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pumpkin:      #0567C1;
+      --pumpkin-light:#75B9F6;
+      --navy:         #03152A;
+      --blue:         #0567C1;
+      --blue-light:   #75B9F6;
+      --green:        #54D633;
+      --yellow:       #F2C516;
+      --gray-dark:    #4D4D4D;
+      --gray-mid:     #C4C4C4;
+      --gray-light:   #E5E5E5;
+      --off-white:    #F7F7F7;
+      --white:        #FFFFFF;
+      --endeavor:     #00E5C3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .pill {
+      display: inline-block;
+      background: var(--pumpkin);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--pumpkin);
+      margin: 1.2rem 0 1.8rem;
+    }
+    .divider--center { margin-left: auto; margin-right: auto; }
+    .divider--teal { background: var(--endeavor); }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--navy);
+      padding: 0.55rem 0;
+    }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+    .topbar__inner span { color: var(--pumpkin); }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .nav__logos {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .nav__logo-block {
+      display: flex;
+      align-items: center;
+      padding: 0 1.4rem;
+    }
+    .nav__logo-block:first-child { padding-left: 0; }
+    .nav__logo-block:not(:last-child) {
+      border-right: 1px solid var(--gray-light);
+    }
+    .nav__logo-block img { display: block; }
+    .nav__logo-atv  { height: 28px; }
+    .nav__logo-end  { height: 20px; }
+    .nav__logo-bofa { height: 28px; }
+
+    .nav__cta {
+      background: var(--pumpkin);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nav__cta:hover { background: #0452a3; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 7rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(5,103,193,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 0% 80%, rgba(0,229,195,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--endeavor);
+      margin-bottom: 1.2rem;
+    }
+    .hero__title {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+    .hero__title em {
+      font-style: normal;
+      color: var(--pumpkin);
+    }
+    .hero__subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 2.4rem;
+    }
+    .hero__body {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+    }
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn--primary {
+      background: var(--pumpkin);
+      color: var(--white);
+    }
+    .btn--primary:hover { background: #0452a3; }
+    .btn--outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .btn--outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+    .hero__stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .hero__stat-value {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--pumpkin);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .hero__stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── BANNER STRIP ── */
+    .banner {
+      background: var(--pumpkin);
+      color: var(--white);
+      padding: 1.1rem 0;
+      text-align: center;
+    }
+    .banner p {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .banner strong { font-weight: 800; }
+
+    /* ── WHAT IS / WHAT NOT ── */
+    .what-section { padding: 6rem 0; }
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .what-card {
+      background: var(--off-white);
+      padding: 2.5rem;
+      border-top: 3px solid var(--pumpkin);
+    }
+    .what-card--not { border-top-color: var(--gray-light); }
+    .what-card h3 {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .what-card--not h3 { color: var(--gray-dark); }
+    .what-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .what-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .what-card li::before {
+      content: '→';
+      color: var(--pumpkin);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .what-card--not li::before { content: '×'; color: var(--gray-mid); }
+
+    /* ── PILLARS ── */
+    .pillars-section {
+      background: var(--navy);
+      color: var(--white);
+      padding: 6rem 0;
+    }
+    .pillars-section .pill { background: rgba(5,103,193,0.2); color: var(--pumpkin); }
+    .section-title {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .section-title--light { color: var(--white); }
+    .section-subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      margin-top: 0.5rem;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      margin-top: 3rem;
+      background: rgba(255,255,255,0.08);
+    }
+    .pillar {
+      background: var(--navy);
+      padding: 2rem 1.5rem;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .pillar:hover { border-top-color: var(--pumpkin); }
+    .pillar__num {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--pumpkin);
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+    .pillar__title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .pillar__items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .pillar__items li {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    /* ── FORMAT ── */
+    .format-section { padding: 6rem 0; background: var(--white); }
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+      max-width: 640px;
+    }
+    .format-blocks { display: flex; flex-direction: column; gap: 1px; }
+    .format-block {
+      display: flex;
+      align-items: stretch;
+      background: var(--off-white);
+    }
+    .format-block__time {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--pumpkin);
+      padding: 1.5rem 1.4rem;
+      background: var(--navy);
+      min-width: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .format-block__body { padding: 1.5rem 1.6rem; }
+    .format-block__label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      margin-bottom: 0.3rem;
+    }
+    .format-block__desc {
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+    }
+    .audience-card {
+      background: var(--navy);
+      color: var(--white);
+      padding: 2.5rem;
+    }
+    .audience-card h3 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--endeavor);
+      margin-bottom: 1.5rem;
+    }
+    .audience-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .audience-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .audience-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pumpkin);
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+    }
+
+    /* ── CALENDAR ── */
+    .calendar-section {
+      background: var(--off-white);
+      padding: 6rem 0;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 3rem;
+      background: var(--gray-light);
+    }
+    .cal-card {
+      background: var(--white);
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cal-card--featured {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .cal-card__month {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      margin-bottom: 0.5rem;
+    }
+    .cal-card--featured .cal-card__month { color: var(--pumpkin); }
+    .cal-card__theme {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+    .cal-card--featured .cal-card__theme { color: var(--white); }
+    .cal-card__meta {
+      font-size: 0.78rem;
+      color: var(--gray-dark);
+      line-height: 1.5;
+    }
+    .cal-card--featured .cal-card__meta { color: rgba(255,255,255,0.55); }
+    .cal-card__tag {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      background: var(--pumpkin);
+      color: var(--white);
+      margin-top: 0.8rem;
+    }
+    .cal-card--featured .cal-card__tag {
+      background: rgba(5,103,193,0.25);
+      color: var(--pumpkin);
+    }
+    .cal-card__corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 32px 32px 0;
+      border-color: transparent var(--pumpkin) transparent transparent;
+      opacity: 0.15;
+    }
+    .cal-card--featured .cal-card__corner { opacity: 0.4; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--pumpkin);
+      color: var(--white);
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .cta-section .section-title { color: var(--white); }
+    .cta-section p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin: 1rem auto 2.5rem;
+    }
+    .cta-section .btn--primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .cta-section .btn--primary:hover { background: #061d38; }
+    .cta-section .btn--outline { border-color: rgba(255,255,255,0.5); }
+    .cta-criteria {
+      margin-top: 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.4);
+      padding: 3rem 0;
+    }
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer__logos {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .footer__logo-block {
+      display: flex;
+      align-items: center;
+      padding: 0 1.2rem;
+    }
+    .footer__logo-block:first-child { padding-left: 0; }
+    .footer__logo-block:not(:last-child) {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer__logo-block img { display: block; opacity: 0.7; }
+    .footer__logo-atv  { height: 22px; filter: brightness(0) invert(1); }
+    .footer__logo-end  { height: 16px; }
+    .footer__logo-bofa { height: 24px; filter: brightness(0) invert(1); opacity: 0.5; }
+    .footer__copy {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-align: right;
+    }
+    .footer__tagline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── SECTION HEADER COMMON ── */
+    .section-header { margin-bottom: 0; }
+    .section-header--center { text-align: center; }
+    .section-header--center .divider { margin-left: auto; margin-right: auto; }
+    .section-header--center .section-subtitle { margin-left: auto; margin-right: auto; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .format-grid { grid-template-columns: 1fr; }
+      .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .nav__logos .nav__logo-block:nth-child(2),
+      .nav__logos .nav__logo-block:nth-child(3) { display: none; }
+      .hero { padding: 4rem 0; }
+      .hero__stats { gap: 2rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .calendar-grid { grid-template-columns: 1fr; }
+      .footer__inner { flex-direction: column; align-items: flex-start; }
+      .footer__copy { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar__inner">
+      Endeavor Southeast &nbsp;×&nbsp; Atlanta Tech Village &nbsp;
+      <span>·</span>
+      &nbsp; Powered by Bank of America
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <div class="nav__logos">
+          <div class="nav__logo-block">
+            <img src="assets/atv-logo-horizontal.png"
+                 alt="Atlanta Tech Village" class="nav__logo-atv" />
+          </div>
+          <div class="nav__logo-block">
+            <img src="assets/endeavor-logo.png"
+                 alt="Endeavor" class="nav__logo-end" />
+          </div>
+          <div class="nav__logo-block">
+            <img src="assets/bofa-logo.png"
+                 alt="Bank of America — Proud Sponsor" class="nav__logo-bofa" />
+          </div>
+        </div>
+        <a href="https://atlantatechvillage.com/events/the-growth-table" target="_blank" rel="noopener" class="nav__cta">Register Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Endeavor Southeast × Atlanta Tech Village</p>
+      <h1 class="hero__title">The<br /><em>Growth</em><br />Table</h1>
+      <p class="hero__subtitle">A Growth Stage Founder Program</p>
+      <p class="hero__body">
+        A monthly breakfast for growth-stage founders across the Southeast to learn
+        from top operators and build the corporate relationships that drive real revenue.
+      </p>
+      <div class="hero__actions">
+        <a href="https://atlantatechvillage.com/events/the-growth-table" target="_blank" rel="noopener" class="btn btn--primary">Register for July</a>
+        <a href="#program" class="btn btn--outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="container">
+      <p><strong>July Launch:</strong> &nbsp;Selling into Enterprise</p>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <section class="pillars-section" id="program">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill">Program Pillars</span>
+        <h2 class="section-title section-title--light">Five tracks.<br />One focus: scale.</h2>
+        <p class="section-subtitle">Every session is anchored to one of five core pillars, ensuring every conversation delivers direct founder value.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar__num">01 / 05</div>
+          <div class="pillar__title">Corporate Access &amp; Commercial Partnerships</div>
+          <ul class="pillar__items">
+            <li>Selling into enterprise</li>
+            <li>Pilots → contracts</li>
+            <li>Procurement navigation</li>
+            <li>Corporate reverse pitches</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">02 / 05</div>
+          <div class="pillar__title">Scaling Operations</div>
+          <ul class="pillar__items">
+            <li>Hiring executive teams</li>
+            <li>Org design at scale</li>
+            <li>Margin and efficiency</li>
+            <li>Internal systems</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">03 / 05</div>
+          <div class="pillar__title">Founder to Founder Exchange</div>
+          <ul class="pillar__items">
+            <li>Closed door, high trust conversations</li>
+            <li>Real time problem solving</li>
+            <li>"What's breaking right now"</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">04 / 05</div>
+          <div class="pillar__title">Market Expansion &amp; Distribution</div>
+          <ul class="pillar__items">
+            <li>Entering new markets</li>
+            <li>Enterprise distribution channels</li>
+            <li>Strategic partnerships</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">05 / 05</div>
+          <div class="pillar__title">Beyond VC: Uncommon Operators</div>
+          <ul class="pillar__items">
+            <li>Global founders</li>
+            <li>Endeavor mentors &amp; board members</li>
+            <li>Athletes, creators, billionaires</li>
+            <li>Perspective + execution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section class="format-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Event Format</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="format-grid">
+        <div class="format-blocks">
+          <div class="format-block">
+            <div class="format-block__time">9:00<span style="font-size:0.9rem">AM</span></div>
+            <div class="format-block__body">
+              <div class="format-block__label">Featured Conversation</div>
+              <div class="format-block__desc">One featured corporate leader or global operator in conversation with a moderator</div>
+            </div>
+          </div>
+          <div class="format-block">
+            <div class="format-block__time">9:30<span style="font-size:0.9rem">AM</span></div>
+            <div class="format-block__body">
+              <div class="format-block__label">Moderated Discussion</div>
+              <div class="format-block__desc">Table level conversation, founders engage directly, ask real questions, share real problems</div>
+            </div>
+          </div>
+          <div class="format-block">
+            <div class="format-block__time">10:00<span style="font-size:0.9rem">AM</span></div>
+            <div class="format-block__body">
+              <div class="format-block__label">Curated Networking</div>
+              <div class="format-block__desc">Facilitated introductions between founders and corporate leaders, no cold approaches</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="calendar-section">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <h2 class="section-title" style="text-align:center;">Seven sessions.<br />Seven opportunities.</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle" style="text-align:center; max-width:500px; margin:0 auto; color:var(--gray-dark);">Each month anchors to a core growth challenge facing Southeast founders right now.</p>
+      </div>
+      <div class="calendar-grid">
+        <div class="cal-card cal-card--featured">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">July 28, 2026</div>
+          <div class="cal-card__theme">Selling into Enterprise</div>
+          <div class="cal-card__tag">Now Open</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">August 25, 2026</div>
+          <div class="cal-card__theme">Retail Distribution</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">September 29, 2026</div>
+          <div class="cal-card__theme">Healthcare: Pilots → Contracts</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">October 27, 2026</div>
+          <div class="cal-card__theme">AI for Operators</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">November 17, 2026</div>
+          <div class="cal-card__theme">Partnerships at Scale</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">December 15, 2026</div>
+          <div class="cal-card__theme">Hiring Your Exec Team</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-card__corner"></div>
+          <div class="cal-card__month">January 26, 2027</div>
+          <div class="cal-card__theme">TBD</div>
+          <div class="cal-card__tag">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="apply">
+    <div class="container">
+      <a href="https://atlantatechvillage.com/events/the-growth-table" target="_blank" rel="noopener" class="btn btn--primary">Register for July 28</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logos">
+            <div class="footer__logo-block">
+              <img src="assets/atv-logo-horizontal.png"
+                   alt="Atlanta Tech Village" class="footer__logo-atv" />
+            </div>
+            <div class="footer__logo-block">
+              <img src="assets/endeavor-logo.png"
+                   alt="Endeavor" class="footer__logo-end" />
+            </div>
+            <div class="footer__logo-block">
+              <img src="assets/bofa-logo.png"
+                   alt="Bank of America" class="footer__logo-bofa" />
+            </div>
+          </div>
+        </div>
+        <div class="footer__copy">
+          <div class="footer__tagline">Real partnerships. Real revenue. Real scale.</div>
+          <div>© 2026 Atlanta Tech Village &nbsp;·&nbsp; Powered by Bank of America</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
